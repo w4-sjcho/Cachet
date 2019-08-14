@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of Cachet.
+ *
+ * (c) Alt Three Services Limited
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace CachetHQ\Cachet\Console\Commands;
 
 use Illuminate\Console\Command;
@@ -33,13 +42,13 @@ class TranslationConverterCommand extends Command
 
         $defaultLocalizations = $this->getDefaultTranslations();
 
-        foreach ((new Finder)->in(resource_path().'/lang')->directories() as $localizations) {
+        foreach ((new Finder())->in(resource_path().'/lang')->directories() as $localizations) {
             $locale = $localizations->getRelativePathname();
 
             if ($locale === 'en') {
                 $localizations = $defaultLocalizations;
             } else {
-                foreach ((new Finder)->in($localizations->getPathname())->files() as $file) {
+                foreach ((new Finder())->in($localizations->getPathname())->files() as $file) {
                     $strings = Lang::get(basename($file->getFilename(), '.php'), [], $locale);
 
                     $localizations = collect($strings)->flatten()->flatMap(function ($string) use ($defaultLocalizations) {
@@ -47,7 +56,6 @@ class TranslationConverterCommand extends Command
                     })->all();
                 }
             }
-
 
             file_put_contents(
                 resource_path()."/lang/{$locale}.json",
@@ -61,12 +69,13 @@ class TranslationConverterCommand extends Command
         $defaultLocale = 'en';
         $localizations = [];
 
-        foreach ((new Finder)->in(resource_path().'/lang/'.$defaultLocale)->files() as $file) {
+        foreach ((new Finder())->in(resource_path().'/lang/'.$defaultLocale)->files() as $file) {
             $strings = Lang::get(basename($file->getFilename(), '.php'), [], $defaultLocale);
 
             $localizations = collect($strings)->flatten()->dd()->flatMap(function ($string, $key) {
                 dd(func_get_args());
                 dd($string, $key);
+
                 return [$string => $string];
             })->unique()->all();
         }

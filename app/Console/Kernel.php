@@ -11,16 +11,16 @@
 
 namespace CachetHQ\Cachet\Console;
 
-use Illuminate\Console\Scheduling\Schedule;
-use CachetHQ\Cachet\Console\Commands\BeaconCommand;
-use CachetHQ\Cachet\Console\Commands\InstallCommand;
-use CachetHQ\Cachet\Console\Commands\VersionCommand;
 use CachetHQ\Cachet\Console\Commands\AppResetCommand;
 use CachetHQ\Cachet\Console\Commands\AppUpdateCommand;
-use CachetHQ\Cachet\Console\Commands\DemoSeederCommand;
-use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use CachetHQ\Cachet\Console\Commands\TranslationConverterCommand;
+use CachetHQ\Cachet\Console\Commands\BeaconCommand;
 use CachetHQ\Cachet\Console\Commands\DemoMetricPointSeederCommand;
+use CachetHQ\Cachet\Console\Commands\DemoSeederCommand;
+use CachetHQ\Cachet\Console\Commands\InstallCommand;
+use CachetHQ\Cachet\Console\Commands\TranslationConverterCommand;
+use CachetHQ\Cachet\Console\Commands\VersionCommand;
+use Illuminate\Console\Scheduling\Schedule;
+use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 /**
  * This is the console kernel class.
