@@ -41,7 +41,7 @@
     <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('/img/apple-touch-icon-72x72.png') }}">
     <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('/img/apple-touch-icon-114x114.png') }}">
     <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('/img/apple-touch-icon-120x120.png') }}">
-    <link rel="apple-touch-icon" ssizes="144x144" href="{{ asset('/img/apple-touch-icon-144x144.png') }}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('/img/apple-touch-icon-144x144.png') }}">
     <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('/img/apple-touch-icon-152x152.png') }}">
 
     <title>{{ $site_title }}</title>
@@ -62,6 +62,7 @@
     <script type="text/javascript">
         var Global = {};
         Global.locale = '{{ $app_locale }}';
+        Global.appUrl = '{{ $app_url }}';
     </script>
     <script src="{{ asset(elixir('dist/js/all.js')) }}"></script>
 </head>

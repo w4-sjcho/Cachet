@@ -19,10 +19,10 @@ $(function() {
         },
         statusCode: {
             401: function () {
-                window.location.href = '/';
+                window.location.href = window.Global.appUrl + '/';
             },
             403: function () {
-                window.location.href = '/';
+                window.location.href = window.Global.appUrl + '/';
             }
         }
     });
@@ -174,7 +174,7 @@ $(function() {
 
                 $.ajax({
                     async: true,
-                    url: '/dashboard/api/components/order',
+                    url: window.Global.appUrl + '/dashboard/api/components/order',
                     type: 'POST',
                     data: {
                         ids: orderedComponentIds
@@ -205,7 +205,7 @@ $(function() {
                 );
                 $.ajax({
                     async: true,
-                    url: '/dashboard/api/components/groups/order',
+                    url: window.Global.appUrl + '/dashboard/api/components/groups/order',
                     type: 'POST',
                     data: {ids: orderedComponentGroupsIds},
                     success: function() {
@@ -226,7 +226,7 @@ $(function() {
 
         $.ajax({
             async: true,
-            url: '/dashboard/api/components/' + formData.component_id,
+            url: window.Global.appUrl + '/dashboard/api/components/' + formData.component_id,
             type: 'POST',
             data: formData,
             success: function(component) {
@@ -250,7 +250,7 @@ $(function() {
                 data: {
                     slug: slug
                 },
-                url: '/dashboard/api/incidents/templates',
+                url: window.Global.appUrl + '/dashboard/api/incidents/templates',
                 success: function(tpl) {
                     var $form = $('form[role=form]');
                     $form.find('input[name=name]').val(tpl.name);
@@ -288,7 +288,7 @@ $(function() {
 
         // Only validate going forward. If current group is invalid, do not go further
         if (next > current) {
-            var url = '/setup/step' + current;
+            var url = window.Global.appUrl + '/setup/step' + current;
             var currentUrl = window.location.href.replace(/step\d/, '');
             var url = currentUrl + '/step' + current;
             $.post(url, $form.serializeObject())
@@ -372,7 +372,7 @@ $(function() {
         $.ajax({
             async: true,
             dataType: 'json',
-            url: '/api/v1/version',
+            url: window.Global.appUrl + '/api/v1/version',
         }).done(function (result) {
             if (result.meta.on_latest === false) {
                 $('#update-alert').removeClass('hidden');

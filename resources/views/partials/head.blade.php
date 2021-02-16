@@ -29,6 +29,7 @@
     <script type="text/javascript">
         var Global = {};
         Global.locale = '{{ $app_locale }}';
+        Global.appUrl = '{{ $app_url }}';
     </script>
     <script src="{{ asset(elixir('dist/js/all.js')) }}"></script>
 </head>
