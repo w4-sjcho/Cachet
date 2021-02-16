@@ -67,7 +67,17 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map(Router $router)
     {
-        $router->group(['namespace' => $this->namespace], function (Router $router) {
+        $appDomain = $this->app->config->get('setting.app_domain');
+        $parsedAppUrl = parse_url($appDomain);
+        $appPrefix = $parsedAppUrl['path'];
+        if (substr($appPrefix, -1) == '/') {
+            $appPrefix = substr($appPrefix, 0, -1);
+        }
+
+        $router->group([
+            'namespace' => $this->namespace,
+            'prefix'    => $appPrefix,
+        ], function (Router $router) {
             foreach (glob(app_path('Http//Routes').'/*.php') as $file) {
                 $this->app->make('CachetHQ\\Cachet\\Http\\Routes\\'.basename($file, '.php'))->map($router);
             }
