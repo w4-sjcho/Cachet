@@ -190,6 +190,7 @@ return [
         'CachetHQ\Cachet\Foundation\Providers\EventServiceProvider',
         'CachetHQ\Cachet\Foundation\Providers\RepositoryServiceProvider',
         'CachetHQ\Cachet\Foundation\Providers\RouteServiceProvider',
+        'CachetHQ\Cachet\Foundation\Providers\CustomUrlGeneratorServiceProvider',
 
     ]),
 
