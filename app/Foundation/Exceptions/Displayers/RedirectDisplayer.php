@@ -49,7 +49,7 @@ class RedirectDisplayer implements DisplayerInterface
      */
     public function display(Exception $exception, $id, $code, array $headers)
     {
-        return redirect()->route('auth.login');
+        return redirect()->guest(route('auth.login'));
     }
 
     /**
