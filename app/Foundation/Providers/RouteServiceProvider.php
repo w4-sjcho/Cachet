@@ -73,7 +73,6 @@ class RouteServiceProvider extends ServiceProvider
         if (substr($appPrefix, -1) == '/') {
             $appPrefix = substr($appPrefix, 0, -1);
         }
-        error_log('appPrefix = '.$appPrefix);
 
         $router->group([
             'namespace' => $this->namespace,
