@@ -61,13 +61,19 @@ class DashboardRoutes
                         'uses' => 'ComponentController@showEditComponentGroup',
                     ]);
                     $router->post('groups/edit/{component_group}', 'ComponentController@updateComponentGroupAction');
-                    $router->delete('groups/{component_group}/delete', 'ComponentController@deleteComponentGroupAction');
+                    $router->delete('groups/{component_group}/delete', [
+                        'as'   => 'groups.delete',
+                        'uses' => 'ComponentController@deleteComponentGroupAction',
+                    ]);
                     $router->post('groups/add', 'ComponentController@postAddComponentGroup');
                     $router->get('{component}/edit', [
                         'as'   => 'edit',
                         'uses' => 'ComponentController@showEditComponent',
                     ]);
-                    $router->delete('{component}/delete', 'ComponentController@deleteComponentAction');
+                    $router->delete('{component}/delete', [
+                        'as'   => 'delete',
+                        'uses' => 'ComponentController@deleteComponentAction',
+                    ]);
                     $router->post('{component}/edit', 'ComponentController@updateComponentAction');
                 });
 
@@ -128,7 +134,10 @@ class DashboardRoutes
                         'uses' => 'IncidentController@showEditTemplateAction',
                     ]);
                     $router->post('{incident_template}/edit', 'IncidentController@editTemplateAction');
-                    $router->delete('{incident_template}/delete', 'IncidentController@deleteTemplateAction');
+                    $router->delete('{incident_template}/delete', [
+                        'as'   => 'delete',
+                        'uses' => 'IncidentController@deleteTemplateAction',
+                    ]);
                 });
 
                 $router->group(['as' => 'subscribers.', 'prefix' => 'subscribers'], function (Registrar $router) {
@@ -141,7 +150,10 @@ class DashboardRoutes
                         'uses' => 'SubscriberController@showAddSubscriber',
                     ]);
                     $router->post('add', 'SubscriberController@createSubscriberAction');
-                    $router->delete('{subscriber}/delete', 'SubscriberController@deleteSubscriberAction');
+                    $router->delete('{subscriber}/delete', [
+                        'as'   => 'delete',
+                        'uses' => 'SubscriberController@deleteSubscriberAction',
+                    ]);
                 });
 
                 $router->group(['as' => 'metrics.', 'prefix' => 'metrics'], function (Registrar $router) {
@@ -154,7 +166,10 @@ class DashboardRoutes
                         'uses' => 'MetricController@showAddMetric',
                     ]);
                     $router->post('add', 'MetricController@createMetricAction');
-                    $router->delete('{metric}/delete', 'MetricController@deleteMetricAction');
+                    $router->delete('{metric}/delete', [
+                        'as'   => 'delete',
+                        'uses' => 'MetricController@deleteMetricAction',
+                    ]);
                     $router->get('{metric}/edit', [
                         'as'   => 'edit',
                         'uses' => 'MetricController@showEditMetricAction',
@@ -181,7 +196,10 @@ class DashboardRoutes
                         $router->post('add', 'TeamController@postAddUser');
                         $router->post('invite', 'TeamController@postInviteUser');
                         $router->post('{user}', 'TeamController@postUpdateUser');
-                        $router->delete('{user}/delete', 'TeamController@deleteUser');
+                        $router->delete('{user}/delete', [
+                            'as'   => 'delete',
+                            'uses' => 'TeamController@deleteUser',
+                        ]);
                     });
                 });
 
@@ -218,7 +236,10 @@ class DashboardRoutes
                         'as'   => 'credits',
                         'uses' => 'SettingsController@showCreditsView',
                     ]);
-                    $router->post('/', 'SettingsController@postSettings');
+                    $router->post('/', [
+                        'as'   => 'index',
+                        'uses' => 'SettingsController@postSettings',
+                    ]);
                 });
 
                 $router->group(['prefix' => 'user'], function (Registrar $router) {
@@ -227,7 +248,10 @@ class DashboardRoutes
                         'uses' => 'UserController@showUser',
                     ]);
                     $router->post('/', 'UserController@postUser');
-                    $router->get('{user}/api/regen', 'UserController@regenerateApiKey');
+                    $router->get('{user}/api/regen', [
+                        'as'   => 'user.api.regen',
+                        'uses' => 'UserController@regenerateApiKey',
+                    ]);
                 });
 
                 $router->group(['prefix' => 'api'], function (Registrar $router) {
