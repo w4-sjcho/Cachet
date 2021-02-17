@@ -23,8 +23,8 @@
                             <strong>{{ $template->name }}</strong>
                         </div>
                         <div class="col-xs-6 text-right">
-                            <a href="/dashboard/templates/{{ $template->id }}/edit" class="btn btn-default">{{ trans('forms.edit') }}</a>
-                            <a href="/dashboard/templates/{{ $template->id }}/delete" class="btn btn-danger confirm-action" data-method='DELETE'>{{ trans('forms.delete') }}</a>
+                            <a href="{{ route('dashboard.templates.edit', [$template->id]) }}" class="btn btn-default">{{ trans('forms.edit') }}</a>
+                            <a href="{{ route('dashboard.templates.delete', [$template->id]) }}" class="btn btn-danger confirm-action" data-method='DELETE'>{{ trans('forms.delete') }}</a>
                         </div>
                     </div>
                     @empty

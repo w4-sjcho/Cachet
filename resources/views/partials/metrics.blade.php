@@ -69,7 +69,7 @@
 
         var chart = charts[metricId];
 
-        $.getJSON('/metrics/'+metricId, { filter: metricGroup }).done(function (result) {
+        $.getJSON(window.Global.appUrl+'/metrics/'+metricId, { filter: metricGroup }).done(function (result) {
             var data = result.data.items;
 
             if (chart.chart !== null) {

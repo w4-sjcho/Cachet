@@ -62,7 +62,7 @@ class AuthController extends Controller
             // We probably want to add support for "Remember me" here.
             Auth::attempt($loginData);
 
-            return Redirect::intended('dashboard');
+            return Redirect::intended(route('dashboard.index'));
         }
 
         return Redirect::route('auth.login')
